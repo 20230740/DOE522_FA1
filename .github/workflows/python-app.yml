@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-        run: ./deploy.sh
+        run: sample.py
 
       - name: Notify on Deployment Failure
         if: ${{ failure() }}
