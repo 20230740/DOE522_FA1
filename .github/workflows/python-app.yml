@@ -68,14 +68,3 @@ jobs:
     - name: Test 
       run: |
         python sample.py
-  deploy: 
-      needs: build
-      runs-on: ubuntu-latest
-      steps:
-      - name: Deploy
-        run: ./deploy.sh
-  
-      - name: Notify on Deployment Failure
-        if: ${{ failure() }}
-        run: echo "Deployment Failed"
-
