@@ -39,9 +39,7 @@ jobs:
         if: ${{ success() }}
         run: |
           echo "Build Successful"
-          echo "Sending email notification..."
-          echo "Subject: Build Successful" | send-email -to ${{ secrets.EMAIL_ADDRESS }} -s smtp.example.com -f your_email@example.com -xu your_email@example.com -xp ${{ secrets.SMTP_PASSWORD }}
-
+          
           
 
   test:
@@ -85,5 +83,4 @@ jobs:
         if: ${{ failure() }}
         run: |
           echo "Deployment Failed"
-          echo "Subject: Deployment Failed" | send-email -to ${{ secrets.EMAIL_ADDRESS }} -s smtp.example.com -f your_email@example.com -xu your_email@example.com -xp ${{ secrets.SMTP_PASSWORD }}
-          exit 1  # This will mark the job as failed
+         
