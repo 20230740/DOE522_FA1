@@ -1,5 +1,2 @@
-a = 11
-b = 10
-c = a + b
-print("Result is ", c)
+print("Build, Test and Deploy is Successful")
 print("Updated code")
