@@ -34,12 +34,15 @@ jobs:
         if: ${{ failure() }}
         run: |
           echo "Build Failed"
-          # Add your notification mechanism here (e.g., Slack, email)
+          
       - name: Notify on Build Success
         if: ${{ success() }}
         run: |
           echo "Build Successful"
-          # Add your notification mechanism here (e.g., Slack, email)
+          echo "Sending email notification..."
+          echo "Subject: Build Successful" | send-email -to ${{ secrets.EMAIL_ADDRESS }} -s smtp.example.com -f your_email@example.com -xu your_email@example.com -xp ${{ secrets.SMTP_PASSWORD }}
+
+          
 
   test:
     needs: build
@@ -82,4 +85,5 @@ jobs:
         if: ${{ failure() }}
         run: |
           echo "Deployment Failed"
-          # Add your notification mechanism here (e.g., Slack, email)
+          echo "Subject: Deployment Failed" | send-email -to ${{ secrets.EMAIL_ADDRESS }} -s smtp.example.com -f your_email@example.com -xu your_email@example.com -xp ${{ secrets.SMTP_PASSWORD }}
+          exit 1  # This will mark the job as failed
