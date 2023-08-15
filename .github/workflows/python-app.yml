@@ -32,7 +32,7 @@ jobs:
           python sample.py
       - name: Notify on Build Failure
         if: ${{ failure() }}
-        run: echo "Build Failed"
+        run: echo "Build Successful"
           # Add your notification mechanism here (e.g., Slack, email)
 
   deploy:
@@ -40,8 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-        run: python-app.yml
-      - name: Notify on Deployment Failure
+        run: sample.py
+      - name: Notify on Deployment Successful
         if: ${{ failure() }}
-        run: echo "Deployment Failed"
+        run: echo "Deployment Successful"
           # Add your notification mechanism here (e.g., Slack, email)
