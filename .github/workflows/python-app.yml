@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-        run: python sample.py
+        run: sample.py
       - name: Notify on Deployment Failure
         if: ${{ failure() }}
         run: echo "Deployment Failed"
