@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   build:
-
+   
     runs-on: ubuntu-latest
 
     steps:
@@ -35,19 +35,11 @@ jobs:
       - name: Notify on Build Failure
         if: ${{ failure() }}
         run: |
-          echo "Build Failed"
-          echo "Sending email notification..."
-          echo "Subject: Build Failed" | send-email -to 20230740@ctucareer.co.za -s smtp.gmail.com:587 -f 20230740@ctucareer.co.za -xu 20230740@ctucareer.co.za -xp ${{ secrets.EMAIL_PASSWORD }}
-          exit 1  # This will mark the job as failed
-          
+          echo "Build Failed  
       - name: Notify on Build Success
         if: ${{ success() }}
         run: |
           echo "Build Successful"
-          echo "Sending email notification..."
-          echo "Subject: Build Successful" | send-email -to 20230740@ctucareer.co.za -s smtp.gmail.com:587 -f 20230740@ctucareer.co.za -xu 20230740@ctucareer.co.za -xp ${{ secrets.EMAIL_PASSWORD }}
-          
-          
 
   test:
     needs: build
@@ -85,12 +77,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Deploy
         run: |
-          python sample.py
+          python ./sample.py  # Use ./ to explicitly specify the path
       - name: Notify on Deployment Failure
         if: ${{ failure() }}
         run: |
           echo "Deployment Failed"
-          echo "Sending email notification..."
-          echo "Subject: Deployment Failed" | send-email -to 20230740@ctucareer.co.za -s smtp.gmail.com:587 -f 20230740@ctucareer.co.za -xu 20230740@ctucareer.co.za -xp ${{ secrets.EMAIL_PASSWORD }}
-          exit 1  # This will mark the job as failed
-         
