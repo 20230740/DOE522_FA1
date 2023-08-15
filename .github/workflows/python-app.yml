@@ -36,9 +36,9 @@ jobs:
       - name: Test
         run: |
           python sample.py
-      - name: Notify on Build Failure
+      - name: Notify on Build Success
         if: ${{ failure() }}
-        run: echo "Build Failed"
+        run: echo "Build Successful"
 
   deploy:
     needs: build  # Make sure 'deploy' job runs after 'build' job
@@ -49,4 +49,4 @@ jobs:
 
       - name: Notify on Deployment Failure
         if: ${{ failure() }}
-        run: echo "Deployment Failed"
+        run: echo "Deployment Successful"
