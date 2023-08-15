@@ -41,7 +41,6 @@ jobs:
     steps:
       - name: Deploy
         run: python sample.py
-
       - name: Notify on Deployment Failure
         if: ${{ failure() }}
         run: echo "Deployment Failed"
